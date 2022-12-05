@@ -43,7 +43,7 @@ public class OrderDao {
     public List<Order> userOrders(int id){
     	List<Order> list = new ArrayList<>();
     	try {
-    		query = "select * form orders where u_id=? order by order by orders.o_id desc ";
+    		query = "select * from orders where u_id=? order by orders.o_id desc";
     		pst = this.con.prepareStatement(query);
     		pst.setInt(1, id);
     		rs = pst.executeQuery();
@@ -67,7 +67,18 @@ public class OrderDao {
     	
     	return list;
     }
-   
+   public void cancelOrder(int id )
+   {
+	   try {
+		   query = "delete from orders where o_id=?";
+		   pst=this.con.prepareStatement(query);
+		   pst.setInt(1, id);
+		   pst.execute();
+		   
+	   }catch(Exception e){
+		   e.printStackTrace();
+	   }
+   }
     
     
 }

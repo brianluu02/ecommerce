@@ -5,83 +5,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Registration</title>
+	<meta charset="UTF-8">
+	<title>Registration</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<%@page import="cn.techtutorial.model.*"%>
+	<%@page import="java.util.*"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8"%>
+	
+	<%@include file="includes/head.jsp"%>
 </head>
 <body>
-
-</body>
-</html>
-
-<%@page import="cn.techtutorial.model.*"%>
-<%@page import="java.util.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<title>Shooping Cart Login</title> -->
-<%@include file="includes/head.jsp"%>
-</head>
-<body>
-	<%-- //<%@include file="includes/navbar.jsp"%> --%>
-	<!-- <div class="container">
-		<div class="card w-50 mx-auto my-5">
-			<div class="card-header text-center">User Login</div>
-			<div class="card-body">
-				<form action="user-login" method="post">
-					<div class="form-group">
-						<label>Email address</label> <input type="email"
-							class="form-control" name="login-email" placeholder="Enter email"
-							required>
-					</div>
-					<div class="form-group">
-						<label>Password</label> <input type="password"
-							class="form-control" name="login-password"
-							placeholder="**********" required>
-					</div>
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary">Login</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div> -->
-
-
-
-<!-- 	<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Register Account</title>
-<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei"
-	rel="stylesheet">
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-</head>
-<body> -->
-
 	<div class="container">
 		<div class="regbox box">
-			<img class="avatar" src="img/collaboration.png">
+			<img class="avatar" src="">
 			<h1>Register Account</h1>
 			<form action="register" method="post">
-				<p>Username</p>
-				<input type="text" placeholder="Username" name="name" required>
-				<p>Useremail</p>
-				<input type="text" placeholder="Useremail" name="email" required>
-				<p>Password</p>
-				<input type="password" placeholder="Password" name="password"
-					required> <input type="submit" value="Register"> <a
-					href="index.jsp">Already have Account?</a>
+                <div class="container">
+                    <h1>Register</h1>
+                    <p>Please fill in this form to create an account.</p>
+                    <hr>
+                    
+                    <label for="name"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="name" id="name" required>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+                
+                    <label for="passrepeat"><b>Repeat Password</b></label>
+                    <input type="password" placeholder="Repeat Password" name="passrepeat" id="passrepeat" required>
+                    <hr>
+                
+                    <button type="submit" class="registerbtn" value="Register">Register</button>
+                    
+                  </div>
+                
+                  <div class="container signin">
+                    <p>Already have an account? <a href="index.jsp">Sign in</a>.</p>
+                </div>
 			</form>
 		</div>
 	</div>
 </body>
-
-
-
-
 <%@include file="includes/footer.jsp"%>
 </body>
 

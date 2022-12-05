@@ -19,10 +19,10 @@
 					<li class="nav-item"><a class="nav-link" href="log-out">Logout</a></li>
 				<%}else{%>
 					<li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+					<li class="nav-item"><a class="nav-link" href="registration.jsp">Register</a></li>
 				<%}
 				%>			
-								
-				<li class="nav-item"><a class="nav-link" href="registration.jsp">Register</a></li>
+				<li class="nav-item"><a class="nav-link" href="manager.jsp">Manager</a></li>
 			</ul>
 		</div>
 	</div>

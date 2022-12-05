@@ -27,10 +27,10 @@ public class CheckOutServlet extends HttpServlet {
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try(PrintWriter out = response.getWriter()){
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat formatter = new SimpleDateFormat("EEEE, dd/MM/yyyy hh:mm a");
 			Date data = new Date();
 			
-			
+			 //yyyy-MM-dd G 'at' HH:mm:ss z
 			ArrayList<Cart> cart_list = (ArrayList<Cart>) request.getSession().getAttribute("cart-list");
 			
 			
@@ -57,7 +57,7 @@ public class CheckOutServlet extends HttpServlet {
 				
 			}
 			else {
-				if (auth == null )  response.sendRedirect("login.jsp");{
+				if (auth == null )response.sendRedirect("login.jsp");{
 					response.sendRedirect("cart.jsp");
 				}
 			}

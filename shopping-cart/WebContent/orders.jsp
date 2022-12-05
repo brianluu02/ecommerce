@@ -16,7 +16,7 @@
 		orders = new OrderDao(DbCon.getConnection()).userOrders(auth.getId());
 	}
 	else {
-		//response.sendRedirect("login.jsp");
+		response.sendRedirect("login.jsp");
 	}
 	ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
 	if(cart_list != null){
