@@ -14,15 +14,31 @@
 				
 				<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart <span class =" badge badge-danger px-1"> ${ cart_list.size() } </span> </a></li>
 				<%
-				if (auth != null){%>
-					<li class="nav-item"><a class="nav-link" href="orders.jsp">Orders</a></li>
-					<li class="nav-item"><a class="nav-link" href="log-out">Logout</a></li>
-				<%}else{%>
+				String admin = "admin";
+				if (auth!=null)
+				{
+					System.out.println(auth.toString());
+					if (auth.getRole().equals(admin))
+					{%>
+						<li class="nav-item"><a class="nav-link" href="orders.jsp">Orders</a></li>
+						<li class="nav-item"><a class="nav-link" href="log-out">Logout</a></li>
+						<li class="nav-item"><a class="nav-link" href="manager.jsp">Manager</a></li>
+					<%}
+					else
+					{%>
+						<li class="nav-item"><a class="nav-link" href="orders.jsp">Orders</a></li>
+						<li class="nav-item"><a class="nav-link" href="log-out">Logout</a></li>
+						
+					<%}
+				}
+				else
+				{%>
 					<li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
 					<li class="nav-item"><a class="nav-link" href="registration.jsp">Register</a></li>
+					
 				<%}
 				%>			
-				<li class="nav-item"><a class="nav-link" href="manager.jsp">Manager</a></li>
+				
 			</ul>
 		</div>
 	</div>

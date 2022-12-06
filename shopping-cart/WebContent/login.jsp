@@ -4,7 +4,8 @@
 	pageEncoding="UTF-8"%>
 	<%
 	User auth =(User) request.getSession().getAttribute("auth");
-	if(auth != null){
+	if(auth != null)
+	{
 		response.sendRedirect("index.jsp");
 	}
 	ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");

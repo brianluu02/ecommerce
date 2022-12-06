@@ -39,13 +39,12 @@ public class LoginServlet extends HttpServlet {
 				UserDao udao = new UserDao(DbCon.getConnection());
 				User user = udao.userLogin(email, password);
 				
-				if (user != null) {
+				if (user != null)
+				{
 					request.getSession().setAttribute("auth", user);
-					
-//					System.out.print("user logged in");
 					response.sendRedirect("index.jsp");
 				} else {
-					out.print("loi r ");
+					out.print("Wrong email or password!");
 				}
 				
 				

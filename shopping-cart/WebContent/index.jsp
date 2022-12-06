@@ -6,7 +6,8 @@
 	pageEncoding="UTF-8"%>
 <%
 User auth = (User) request.getSession().getAttribute("auth");
-if (auth != null) {
+if (auth != null) 
+{
 	request.setAttribute("auth", auth);
 }
 ProductDao pd = new ProductDao(DbCon.getConnection());
