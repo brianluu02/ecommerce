@@ -17,7 +17,7 @@
 				String admin = "admin";
 				if (auth!=null)
 				{
-					System.out.println(auth.toString());
+					//System.out.println(auth.toString()); - In ra console info tai khoan va role
 					if (auth.getRole().equals(admin))
 					{%>
 						<li class="nav-item"><a class="nav-link" href="orders.jsp">Orders</a></li>

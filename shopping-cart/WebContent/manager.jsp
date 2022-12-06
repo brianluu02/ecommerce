@@ -1,18 +1,32 @@
+<%@page import="cn.techtutorial.connection.DbCon"%>
+<%@page import="cn.techtutorial.model.*"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+	<%
+		User auth =(User) request.getSession().getAttribute("auth");
+		String admin = "admin";
+		if (auth!=null)
+		{
+			request.setAttribute("auth", auth);
+			if (auth.getRole().equals(admin) == false)
+			{
+				response.sendRedirect("index.jsp");
+			}
+		}
+		else
+		{
+			response.sendRedirect("index.jsp");
+		}
+	%>
 
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>Manager Page</title>
+<%@include file = "includes/head.jsp" %>
+</head>
 <!--  <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
