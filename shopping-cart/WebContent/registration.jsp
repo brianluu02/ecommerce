@@ -1,13 +1,19 @@
 <%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> --%>
-
+<%
+	User auth =(User) request.getSession().getAttribute("auth");
+	if(auth != null)
+	{
+		response.sendRedirect("index.jsp");
+	}
+	%>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Registration</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/registrationstyle.css">
 	<%@page import="cn.techtutorial.model.*"%>
 	<%@page import="java.util.*"%>
 	<%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,6 +22,7 @@
 	<%@include file="includes/head.jsp"%>
 </head>
 <body>
+	<%@include file="includes/navbar.jsp"%>
 	<div class="container">
 		<div class="regbox box">
 			<img class="avatar" src="">
