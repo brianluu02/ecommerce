@@ -35,7 +35,6 @@
 <title>Manager Page</title>
 <link rel="stylesheet" type="text/css" href="css/managerstyle.css">
 <%@include file = "includes/head.jsp" %>
-<%@include file="includes/head.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>List Products</title>
 	<%@include file = "includes/head.jsp" %>
@@ -56,6 +55,7 @@
 </head>
 
 <body>
+<%@include file="includes/navbar.jsp"%>
 <div class="container">  
     <h1>Product Manager</h1>  
     <input type="hidden" id="inputbox" />  
@@ -71,7 +71,7 @@
     <br />  
     <br />
     <div class="row">
-      		<input class="center-block" type="submit" value="Add">
+      		<input class="center-block" type="submit" value="Add/Update">
       		<input class="center-block" type="submit" value="Clear">
     </div>
 </div>

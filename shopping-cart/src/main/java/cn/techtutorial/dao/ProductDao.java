@@ -51,6 +51,34 @@ public class ProductDao {
 	
 	}
 	
+	public List<Product> searchProducts(String text) 
+	{
+        List<Product> products = new ArrayList<>();
+        try {
+
+            query = "SELECT * FROM products WHERE CONCAT(products.name, '', products.category) LIKE \"%" + text +"%\";";
+            pst = this.con.prepareStatement(query);
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+            	Product row = new Product();
+                row.setId(rs.getInt("id"));
+                row.setName(rs .getString("name"));
+                row.setCategory(rs.getString("category"));
+                row.setPrice(rs.getDouble("price"));
+                row.setImage(rs.getString("image"));
+
+                products.add(row);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            //System.out.println(e.getMessage());
+        }
+        return products;
+	
+	}
+	
 	/*
 	 * public List<Cart> getCartProducts(ArrayList<Cart> cartList) { List<Cart>
 	 * products = new ArrayList<>(); try { if(cartList.size()>0) { for (Cart item :

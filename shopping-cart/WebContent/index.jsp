@@ -13,8 +13,6 @@ if (auth != null)
 ProductDao pd = new ProductDao(DbCon.getConnection());
 List<Product> products = pd.getAllProducts();
 
-
-
 ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
 if(cart_list != null){
 	request.setAttribute("cart_list", cart_list);
@@ -30,10 +28,25 @@ if(cart_list != null){
 <%@include file="includes/head.jsp"%>
 </head>
 <body>
-	<!-- <a href "registration.jsp"></a> -->
 	<%@include file="includes/navbar.jsp"%>
 	<div class="container">
-		<div class="card-header my-3">All Products</div>
+		<div class="card-header my-3">All Products
+			<div style="float:right;text-align:left">
+				<form>
+					<input type="text" id="myInput" name="myInput" maxlength="128" placeholder="Search for products.." >
+					<input type="submit" value="Search">
+				</form>
+				<%
+					String text = (String) request.getParameter("myInput");
+					if (text != null)
+					{
+						ProductDao temp = new ProductDao(DbCon.getConnection());
+						products = null;
+						products = temp.searchProducts(text);
+					}
+				%>		
+			</div>
+		</div>
 		<div class="row">
 		<%
 			if (!products.isEmpty()){
