@@ -31,7 +31,7 @@ public class QuantityIncDecServlet extends HttpServlet {
 			
 			
 			
-			if (action !=null && id => 1 ) {
+			if (action !=null && id >= 1 ) {
 				if (action.equals("inc")) {
 					for (Cart c:cart_list) {
 						if (c.getId() == id) {

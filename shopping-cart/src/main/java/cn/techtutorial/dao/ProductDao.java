@@ -24,12 +24,88 @@ public class ProductDao {
 		this.con = con;
 	}
 	
+	public boolean insertProduct(Product model ) {
+    	boolean result = false;
+    	
+    	try{
+    		query = "insert into products (name, category, price, image) values (?,?,?,?)";
+    		pst = this.con.prepareStatement(query);
+    		pst.setString(1, model.getName());
+    		pst.setString(2, model.getCategory());
+    		pst.setDouble(3, model.getPrice());
+    		pst.setString(4, model.getImage());
+    		pst.executeUpdate();
+    		result = true;
+    	}catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	 return result;
+    }
 	public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
         try {
 
             query = "select * from products";
             pst = this.con.prepareStatement(query);
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+            	Product row = new Product();
+                row.setId(rs.getInt("id"));
+                row.setName(rs .getString("name"));
+                row.setCategory(rs.getString("category"));
+                row.setPrice(rs.getDouble("price"));
+                row.setImage(rs.getString("image"));
+
+                products.add(row);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            //System.out.println(e.getMessage());
+        }
+        return products;
+	
+	}
+	public void deleteProduct(int id ){
+		   try {
+			   query = "delete from products where id=?";
+			   pst = this.con.prepareStatement(query);
+			   pst.setInt(1, id);
+			   pst.execute();
+			   
+		   }catch(Exception e){
+			   e.printStackTrace();
+		   }
+	   }
+	public boolean updateProduct(Product model ) {
+    	boolean result = false;
+
+    	try{
+    		query = "update products set name=?, category=?, price=?, image=? where id=?";
+    		pst = this.con.prepareStatement(query);
+    		pst.setString(1, model.getName());
+    		pst.setString(2, model.getCategory());
+    		pst.setDouble(3, model.getPrice());
+    		pst.setString(4, model.getImage());
+    		pst.setInt(5, model.getId());
+    		
+    		pst.executeUpdate();
+    		
+    		result = true;
+    	}catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	return result;
+    }
+	public List<Product> findProducts(String name) {
+        List<Product> products = new ArrayList<>();
+        try {
+
+            query = "select * from products where name like '%?%'";
+            pst = this.con.prepareStatement(query);
+            pst.setString(1, name);
+            
             rs = pst.executeQuery();
 
             while (rs.next()) {
@@ -142,7 +218,7 @@ public class ProductDao {
     			row.setName(rs.getString("name"));
     			row.setCategory(rs.getString("category"));
     			row.setPrice(rs.getDouble("price"));
-    			row.setName(rs.getString("image"));
+    			row.setImage(rs.getString("image"));
     		}
     		
     	}catch(Exception e ){

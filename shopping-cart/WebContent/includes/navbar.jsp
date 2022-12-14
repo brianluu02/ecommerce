@@ -22,7 +22,7 @@
 					{%>
 						<li class="nav-item"><a class="nav-link" href="orders.jsp">Orders</a></li>
 						<li class="nav-item"><a class="nav-link" href="log-out">Logout</a></li>
-						<li class="nav-item"><a class="nav-link" href="manager.jsp">Manager</a></li>
+						<li class="nav-item"><a class="nav-link" href="productsListView.jsp">Manager</a></li>
 					<%}
 					else
 					{%>
