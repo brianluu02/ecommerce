@@ -56,12 +56,20 @@
 					<input class="btn btn-outline-success" type="submit" value="Search/Refresh">
 				</form>
 				<%
-					String text = (String) request.getParameter("search");
-					if (text != null)
+					String text = null;
+					text = (String) request.getParameter("search");
+					System.out.println(text);
+					if (!text.isEmpty())
 					{
 						ProductDao temp = new ProductDao(DbCon.getConnection());
 						products = null;
 						products = temp.searchProducts(text);
+					}
+					else
+					{
+						ProductDao temp = new ProductDao(DbCon.getConnection());
+						products = null;
+						products = temp.getAllProducts();
 					}
 				%>		
 			</div>

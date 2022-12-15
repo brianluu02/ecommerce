@@ -133,10 +133,14 @@ public class ProductDao {
 	
 	public List<Product> searchProducts(String text) 
 	{
+		String lowertext = text.toLowerCase();
+		String finaltext = lowertext.replace(" ", "|");
         List<Product> products = new ArrayList<>();
         try {
 
-            query = "SELECT * FROM products WHERE CONCAT(products.name, '', products.category) LIKE \"%" + text +"%\";";
+            //query = "SELECT * FROM products WHERE CONCAT(products.name, '', products.category) LIKE \"%" + text +"%\";";
+            query = "SELECT * FROM products WHERE products.name REGEXP '" + finaltext + "' or products.category REGEXP '" + finaltext + "';";
+            
             pst = this.con.prepareStatement(query);
             rs = pst.executeQuery();
 
