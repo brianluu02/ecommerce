@@ -10,15 +10,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Create Product</title>
 <script type="text/javascript">         
-	    function validateForm()  {
-	    	var x = document.forms["createProductForm"]["name"].value;
-	    	  if (x == "") {
-	    	    alert("Enter Product Name!");
-	    	    return false;
-	    	  }
-	    	  else
-	    		  return true;
-	   }
+	function validateForm()  {
+	 	var x = document.forms["createProductForm"]["name"].value;
+	 	  if (x == "") {
+	 	    alert("Enter Product Name!");
+	 	    return false;
+	 	  }
+	 	  else
+	 		  return true;
+	}
+	function checklink(){
+		var image = document.getElementById("imageload");
+		var url = document.getElementById("image").value;
+		image.src = url;
+	}
 </script>
 <%
 	User auth =(User) request.getSession().getAttribute("auth");
@@ -59,8 +64,15 @@
 	               </tr>
 	               <tr>
 	                  <td>Image link:</td>      
-	                  <td><input type="text" name="image" id="url-uploader"/></td>
+	                  <td>
+	                  	<input type="text" id="image" name="image" id="url-uploader"/>
+	                  	<button type='button' id="checkimage" onclick="checklink()">Check link</button>
+	                  </td>
 	               </tr>
+	                  <td>Check image:
+	                  	<img id="imageload" alt="Loading..." width = "50%" height = "50%"/>
+	                  </td>
+	               <tr>
 	               <tr></tr>
 	               <tr>
 	                  <td colspan = "2">

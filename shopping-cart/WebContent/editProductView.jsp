@@ -27,6 +27,22 @@
 		response.sendRedirect("index.jsp");
 	}
 %>
+<script type="text/javascript">
+function checklink(){
+	var image = document.getElementById("imageload");
+	var url = document.getElementById("image").value;
+	image.src = url;
+}
+</script>
+<style type="text/css">
+	table {
+	  table-layout: fixed ;
+	  width: 100% ;
+	}
+	td {
+	  width: 25% ;
+	}
+</style>
 </head>
 <body>
 <%@include file="includes/navbar.jsp"%>
@@ -51,13 +67,26 @@
 	               </tr>
 	               <tr>
 	                  <td>Price</td>
-	                  <td><input type="text" name="price" value="${product.price}"/></td>
+	                  <td>
+	                  	<input type="text" name="price" value="${product.price}"/>
+	             	  </td>
 	               </tr>
 	               <tr>
 	                  <td>Image link:</td>
 	                  <td>
-	                  	<input type="text" name="image" value="${product.image}"/>
-	                  </td>  
+	                  	<input type="text" id="image" name="image" value="${product.image}"/>
+	                  	<button type='button' id="checkimage" onclick="checklink()">Check link</button>
+						    
+	                  </td>
+	                  
+	               </tr>
+	               	  <td>Old image:
+	                  	<img src = "${product.image}" width = "50%" height = "50%" alt="Old image wrong link!"/>
+	                  </td>
+	                  <td>New image:
+	                  	<img id="imageload" alt="Loading..." width = "50%" height = "50%" alt="New image wrong link!"/>
+	                  </td>
+	               <tr>
 	               </tr>
 	               <tr></tr>
 	               <tr>

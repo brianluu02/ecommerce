@@ -65,6 +65,10 @@
 					}
 				%>		
 			</div>
+			<br>
+    	<div>
+    	<a class="btn btn-primary" href="create-product" >Create Product</a>
+    	</div>
     	<br>
 		<table class="table table-light">
 			<thead>
@@ -88,7 +92,7 @@
 						<td><%=p.getName() %></td>
 						<td><%=p.getCategory() %></td>
 						<td><%=dcf.format(p.getPrice()) %></td>
-						<td><%=p.getImage() %></td>
+						<td width = "25%" height = "25%"> <img class="card-img-top" src = "<%=p.getImage() %>" width = "25%" height = "25%" alt="Card image cap"/></td>
 						<td><a class="btn btn-sm btn-outline-primary" href="edit-product?id=<%= p.getId() %>">Edit</a></td>
 						<td><a class="btn btn-sm btn-outline-danger" href="#" onclick="testConfirmDialog(<%= p.getId()%>);">Delete</a></td>
 					</tr>
@@ -98,7 +102,6 @@
 			
 			</tbody>
 		</table>
-		<a class="btn btn-primary" href="create-product" >Create Product</a> 
 	</div>
 <%@include file = "includes/footer.jsp" %>
 </body>
