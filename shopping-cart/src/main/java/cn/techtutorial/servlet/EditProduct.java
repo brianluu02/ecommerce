@@ -87,7 +87,7 @@ public class EditProduct extends HttpServlet {
 		String name= (String)request.getParameter("name");
         String category = (String)request.getParameter("category");
         String priceStr = (String)request.getParameter("price");
-        String image = (String)request.getParameter("file");
+        String image = (String)request.getParameter("image");
         
         Double price = 0.0;
         int id = 0;

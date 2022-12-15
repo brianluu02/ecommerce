@@ -11,9 +11,19 @@
 	request.setAttribute("dcf", dcf);
 	User auth =(User) request.getSession().getAttribute("auth");
 	List<Order>  orders = null;
-	if(auth != null){
+	String check = "admin";
+	if(auth != null)
+	{
 		request.setAttribute("auth", auth);
-		orders = new OrderDao(DbCon.getConnection()).userOrders(auth.getId());
+		if (auth.getRole().equals(check))
+		{
+			orders = new OrderDao(DbCon.getConnection()).allOrders();
+		}
+		else
+		{
+			orders = new OrderDao(DbCon.getConnection()).userOrders(auth.getId());
+		}
+			
 	}
 	else {
 		response.sendRedirect("login.jsp");

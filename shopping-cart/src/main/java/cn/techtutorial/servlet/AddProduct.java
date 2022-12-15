@@ -1,15 +1,28 @@
 package cn.techtutorial.servlet;
 
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UncheckedIOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Base64;
 
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.ImageIcon;
 
 import cn.techtutorial.connection.DbCon;
 import cn.techtutorial.dao.ProductDao;
@@ -58,8 +71,7 @@ public class AddProduct extends HttpServlet {
         String name= (String)request.getParameter("name");
         String category = (String)request.getParameter("category");
         String priceStr = (String)request.getParameter("price");
-        String image = (String)request.getParameter("file");
-        
+        String image = (String)request.getParameter("image");
         Double price = 0.0;
         try {
             price = Double.parseDouble(priceStr);
@@ -78,5 +90,4 @@ public class AddProduct extends HttpServlet {
         	response.sendRedirect("createProductView.jsp");
         }
 	}
-
 }

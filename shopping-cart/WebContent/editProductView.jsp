@@ -1,3 +1,7 @@
+<%@page import="java.util.*"%>
+<%@page import="cn.techtutorial.connection.DbCon"%>
+<%@page import="cn.techtutorial.dao.ProductDao"%>
+<%@page import="cn.techtutorial.model.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
@@ -7,8 +11,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Edit Product</title>
 <%@include file="includes/head.jsp"%>
+<%
+	User auth =(User) request.getSession().getAttribute("auth");
+	String check = "admin";
+	if (auth!=null)
+	{
+		request.setAttribute("auth", auth);
+		if (auth.getRole().equals(check) == false)
+		{
+			response.sendRedirect("index.jsp");
+		}
+	}
+	else
+	{
+		response.sendRedirect("index.jsp");
+	}
+%>
 </head>
 <body>
+<%@include file="includes/navbar.jsp"%>
 <div class="container">
 	<div class="card-header my-3">Edit Products</div>
 	<c:if test="${not empty product}">
@@ -33,10 +54,9 @@
 	                  <td><input type="text" name="price" value="${product.price}"/></td>
 	               </tr>
 	               <tr>
-	                  <td>Image</td>
+	                  <td>Image link:</td>
 	                  <td>
 	                  	<input type="text" name="image" value="${product.image}"/>
-	                  	<input type="file" name="file" id="file-uploader" accept=".jpg, .png, .jpeg" value="">
 	                  </td>  
 	               </tr>
 	               <tr></tr>

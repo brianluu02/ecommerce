@@ -34,21 +34,22 @@ public class RegisterServlet extends HttpServlet {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			String passrepeat = request.getParameter("passrepeat");
-
+			String role = "user";
 			try
 			{
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection connection  = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce_cart", "root", "123456");
+				Connection connection  = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/EWRRX7sJQL", "EWRRX7sJQL", "r23irMGwNn");
 				if (password.equals(passrepeat))
 				{
-					PreparedStatement ps = connection.prepareStatement ("insert into users(name,email,password) values(?,?,?)");
+					PreparedStatement ps = connection.prepareStatement ("insert into users(name,email,password,role) values(?,?,?,?)");
 					ps.setString(1, username);
 					ps.setString(2, email);
 					ps.setString(3, password);
-					int i =ps.executeUpdate();
+					ps.setString(4, role);
+					int i = ps.executeUpdate();
 					if (i>0) 
 					{
-						out.print("a you redi");
+						out.print("Loading...");
 					}
 					RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 					rd.include(request,response);

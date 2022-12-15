@@ -1,4 +1,7 @@
 <%@page import="java.util.*"%>
+<%@page import="cn.techtutorial.connection.DbCon"%>
+<%@page import="cn.techtutorial.dao.ProductDao"%>
+<%@page import="cn.techtutorial.model.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -15,11 +18,28 @@
 	    	  }
 	    	  else
 	    		  return true;
-	   }  
-      </script>
+	   }
+</script>
+<%
+	User auth =(User) request.getSession().getAttribute("auth");
+	String check = "admin";
+	if (auth!=null)
+	{
+		request.setAttribute("auth", auth);
+		if (auth.getRole().equals(check) == false)
+		{
+			response.sendRedirect("index.jsp");
+		}
+	}
+	else
+	{
+		response.sendRedirect("index.jsp");
+	}
+%>
 <%@include file="includes/head.jsp"%>
 </head>
 <body>
+<%@include file="includes/navbar.jsp"%>
 <div class="container">
 	<div class="card-header my-3">Create Products</div>
 		<form method="POST" action="${pageContext.request.contextPath}/create-product"
@@ -38,14 +58,17 @@
 	                  <td><input type="text" name="price"/></td>
 	               </tr>
 	               <tr>
-	                  <td>Image</td>      
-	                  <td><input type="file" name="file" id="file-uploader" accept=".jpg, .png"/></td>
+	                  <td>Image link:</td>      
+	                  <td><input type="text" name="image" id="url-uploader"/></td>
 	               </tr>
 	               <tr></tr>
 	               <tr>
 	                  <td colspan = "2">
-	                      <input class="btn btn-primary" type="submit" value="Create" />
+	                      <input class="btn btn-primary" type="submit" value="Create"/>
 	                      <a class="btn btn-link" href="${pageContext.request.contextPath}/productsListView.jsp">Cancel</a>
+	                  <script>
+	          		  
+	                  </script>
 	                  </td>
 	               </tr>
 	            </table>

@@ -1,5 +1,9 @@
 package cn.techtutorial.dao;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 //import java.util.*;
 /*import java.sql.*;
 import java.util.*;*/
@@ -249,5 +253,17 @@ public class ProductDao {
     		e.printStackTrace();
     	}
     	return sum;
+    }
+    
+    public String getBase64EncodedImage(String imageURL) throws MalformedURLException{
+    	URL url = new URL(imageURL);
+    	BufferedInputStream bis = null;
+		try {
+			bis = new BufferedInputStream(url.openConnection().getInputStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return bis.toString();
     }
 }
