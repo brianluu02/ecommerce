@@ -82,6 +82,18 @@ public class ProductDao {
 			   e.printStackTrace();
 		   }
 	   }
+	
+	public void deleteOrder(){
+		   try {
+			   query = "DELETE FROM orders WHERE orders.p_id NOT IN (SELECT products.id FROM products);";
+			   pst = this.con.prepareStatement(query);
+			   pst.execute();
+			   
+		   }catch(Exception e){
+			   e.printStackTrace();
+		   }
+	   }
+	
 	public boolean updateProduct(Product model ) {
     	boolean result = false;
 

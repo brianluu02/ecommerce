@@ -44,6 +44,7 @@ public class DeleteProduct extends HttpServlet {
 
             if(id != null){
             	productDAO.deleteProduct(Integer.parseInt(id));
+            	productDAO.deleteOrder();
             }
         	response.sendRedirect("productsListView.jsp");
 		} catch (ClassNotFoundException | SQLException e1) {

@@ -15,6 +15,7 @@
 	if(auth != null)
 	{
 		request.setAttribute("auth", auth);
+		System.out.print(auth.getRole());
 		if (auth.getRole().equals(check))
 		{
 			orders = new OrderDao(DbCon.getConnection()).allOrders();
